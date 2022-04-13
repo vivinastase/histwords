@@ -408,7 +408,8 @@
       ann_lines[group] = ann_line;
     });
 
-    var scaleFactor = 10;
+    /*  var scaleFactor = 10;  */
+    var scaleFactor = 3;  /* this is for the line connecting the query word projections (the smaller, the thicker) */
 
     function getPos(min_or_max, x_or_y) {
       var val = _[min_or_max](results, function(d) { return d.position[x_or_y];});
@@ -453,14 +454,18 @@
       .data(results)
       .enter()
       .append('text')
-        .style('font-size', function(d) { return parseInt(d.avg_similarity * scaleFactor, 10) + 'px';})
+        /*  .style('font-size', function(d) { return parseInt(d.avg_similarity * scaleFactor, 10) + 'px';})  */
+        .style('font-size', function(d) { return parseInt(d.avg_similarity * 15, 20) + 'px';})
         .style('cursor', 'pointer')
         .attr('x', function(d) { return d.position.x * scaleFactor; })
         .attr('y', function(d) { return d.position.y * scaleFactor; })
         .attr('data-year', function(d) { return d.year })
-        .attr('fill', function(d) { return getColor(d.query); })
+        /*  .attr('fill', function(d) { return getColor(d.query); })   */
+        .attr('fill', function(d) { return getColor(d.year); }) /* to get the words from different years in different colours in the "cloud" view */
         .attr('class', 'term')
-        .style('opacity', function(d) { return Math.max(0.1, (d.year - 1700) / 300); })
+        /* .style('opacity', function(d) { return Math.max(0.1, (d.year - 1700) / 300); })   */
+        /* .style('opacity', function(d) { return Math.max(0.1, d.year/ 3); })   */
+	.style('opacity', function(d) { return 1; })
         .text(function(d) { return d.word; })
         .on('mouseover', function(d) {
           addTooltip(tooltip, d);
@@ -491,7 +496,8 @@
       .data(annotations)
       .enter()
       .append('text')
-        .style('font-size', '3px')
+        /* .style('font-size', '3px')   */
+        .style('font-size', '5px')
         .style('cursor', 'pointer')
         .attr('x', function(d) { return d.position.x * scaleFactor + 1; })
         .attr('y', function(d) { return d.position.y * scaleFactor + 1; })

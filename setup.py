@@ -1,4 +1,5 @@
 from setuptools import setup
+import numpy
 
 setup(name='histwords',
       version='0.1',
@@ -10,5 +11,6 @@ setup(name='histwords',
       install_requires = ['numpy',
                           'cython',
                           'sklearn',
-                          'statsmodels']
+                          'statsmodels'],
+      include_dirs=[numpy.get_include()]
       )

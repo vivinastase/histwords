@@ -26,7 +26,7 @@ def update_count(ngram, target_ind, year, count, year_counters):
     return year_counters
 
 def main(proc_num, queue, out_dir, download_dir, context_size):
-    print proc_num, "Start loop"
+    print(proc_num, "Start loop")
     while True:
         if queue.empty():
             break
@@ -34,7 +34,7 @@ def main(proc_num, queue, out_dir, download_dir, context_size):
         loc_dir = out_dir + "/" + name + "/"
         ioutils.mkdir(loc_dir)
 
-        print proc_num, "Going through", name
+        print(proc_num, "Going through", name)
         index = collections.OrderedDict()
         year_counters = collections.defaultdict(collections.Counter)
         time.sleep(120 * random.random())
@@ -54,7 +54,7 @@ def main(proc_num, queue, out_dir, download_dir, context_size):
                 else:
                     raise Exception("Unsupported context size")
 
-        print proc_num, "Writing", name
+        print(proc_num, "Writing", name)
         time.sleep(120 * random.random())
         sparse_io.export_mats_from_dicts(year_counters, loc_dir)
         ioutils.write_pickle(index, loc_dir + "index.pkl")

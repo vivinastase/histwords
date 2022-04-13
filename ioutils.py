@@ -61,7 +61,7 @@ def load_year_index_infos(index_dir, years, word_file, num_words=-1):
                 years, word_file, num_words=num_words)
     year_index_infos = collections.defaultdict(dict)
     word_lists = load_year_words(word_file, years)
-    for year, word_list in word_lists.iteritems():
+    for year, word_list in word_lists.items():
         year_index = load_pickle(index_dir + "/" + str(year) + "-index.pkl") 
         year_index_infos[year]["index"] = year_index
         if num_words != -1:
@@ -81,7 +81,7 @@ def load_year_index_infos_common(common_index, years, word_file, num_words=-1):
     """
     year_index_infos = collections.defaultdict(dict)
     word_lists = load_year_words(word_file, years)
-    for year, word_list in word_lists.iteritems():
+    for year, word_list in word_lists.items():
         year_index = common_index
         year_index_infos[year]["index"] = year_index
         if num_words != -1:
@@ -110,6 +110,7 @@ def load_year_words(word_file, years):
 def mkdir(directory):
     if not os.path.exists(directory):
         os.makedirs(directory) 
+
 
 def write_pickle(data, filename):
     fp = open(filename, "wb")
