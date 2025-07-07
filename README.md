@@ -75,7 +75,7 @@ However, as a caveat to the above, the code is somewhat messy, unstable, and spe
 ## Dependencies
 
 Core dependencies:
-  * python 2.7
+  * python 2.7 
   * sklearn: http://scikit-learn.org/stable/
   * cython: http://docs.cython.org/src/quickstart/install.html
   * statsmodels: http://statsmodels.sourceforge.net/
